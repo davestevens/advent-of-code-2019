@@ -145,9 +145,9 @@ class IntCode {
       case IMMEDIATE:
         return value;
       case POSITION:
-        return this._memory[value];
+        return this._memory[value] || 0;
       case RELATIVEPOSITION:
-        return this._memory[value + this._relativeBase];
+        return this._memory[value + this._relativeBase] || 0;
       default:
         throw new Error(`Trying to get value with unknown mode: ${mode}`);
     }
@@ -166,7 +166,7 @@ class IntCode {
   }
 
   _next() {
-    return this._memory[this._pointer++];
+    return this._memory[this._pointer++] || 0;
   }
 }
 
